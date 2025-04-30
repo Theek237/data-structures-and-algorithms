@@ -28,11 +28,21 @@ class MyArray {
   delete(index) {
     const item = this.data[index];
     for (let i = index; i < this.length; i++) {
-      this.data[index] = this.data[index + 1];
+      this.data[i] = this.data[i + 1];
     }
     delete this.data[this.length - 1];
     this.length--;
     return item;
+  }
+
+  //add item to specific position
+  insert(index, item) {
+    for (let i = this.length - 1; i >= index; i--) {
+      this.data[i + 1] = this.data[i];
+    }
+    this.data[index] = item;
+    this.length++;
+    return this.length;
   }
 }
 
@@ -42,6 +52,9 @@ newArray.push("a");
 newArray.push("b");
 newArray.push("c");
 newArray.push("d");
+newArray.push("e");
+newArray.push("f");
+newArray.push("g");
 console.log(newArray);
 
 console.log(newArray.get(2));
@@ -50,4 +63,7 @@ newArray.pop();
 console.log(newArray);
 
 newArray.delete(1);
+console.log(newArray);
+
+newArray.insert(2, "boo");
 console.log(newArray);
