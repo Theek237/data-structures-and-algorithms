@@ -11,4 +11,6 @@ stringArray.unshift("z"); //O(n)
 
 console.log(stringArray);
 //splice - add to specific position
-stringArray.splice();
+//array.splice(startIndex, deleteCount, item1, item2, ...)
+stringArray.splice(2, 0, "boo"); //O(n)
+console.log(stringArray);
