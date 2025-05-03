@@ -2,6 +2,8 @@ class MyArray {
   constructor() {
     this.length = 0;
     this.data = {};
+    console.log("this obj =", this);
+    console.log("this obj.length =", this.length);
   }
 
   //get an item
@@ -11,8 +13,10 @@ class MyArray {
 
   //add to end
   push(item) {
+    console.log("this obj before push =", this);
     this.data[this.length] = item;
     this.length++;
+    console.log("this obj after push =", this);
     return this.length;
   }
 
