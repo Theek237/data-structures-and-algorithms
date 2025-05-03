@@ -1,7 +1,6 @@
 class HashTable {
   constructor(size) {
     this.data = new Array(size);
-    console.log("this object initial = ", this);
   }
 
   _hash(key) {
@@ -13,9 +12,8 @@ class HashTable {
   }
 
   set(key, value) {
-    console.log("this before set =", this.data);
+    // console.log("this before set =", this.data);
     let address = this._hash(key); //generate address based on hash
-    console.log("address = ", address);
 
     //if nothing in the memory
     if (!this.data[address]) {
@@ -27,13 +25,13 @@ class HashTable {
       this.data[address].push([key, value]);
     }
 
-    console.log("this after set =", this.data);
+    // console.log("this after set =", this.data);
   }
 
   get(key) {
     const address = this._hash(key);
     const bucket = this.data[address];
-    console.log(bucket);
+    // console.log(bucket);
     if (!bucket) {
       return undefined;
     }
@@ -46,6 +44,21 @@ class HashTable {
 
     //key not found
     return undefined;
+  }
+
+  keys() {
+    const keysArray = [];
+    for (let i = 0; i < this.data.length; i++) {
+      const currentBucket = this.data[i];
+      if (currentBucket) {
+        //something is in current bucket
+        for (let j = 0; j < currentBucket.length; j++) {
+          keysArray.push(currentBucket[j][0]);
+        }
+      }
+    }
+
+    return keysArray;
   }
 
   get1(key) {
@@ -72,13 +85,22 @@ class HashTable {
     }
   }
 }
-const myHashTable = new HashTable(2);
+const myHashTable = new HashTable(50);
 // console.log(myHashTable);
 myHashTable.set("grapes", 10000);
 myHashTable.set("apples", 40);
+myHashTable.set("Oranges", 100);
+myHashTable.set("Bananas", 10);
+myHashTable.set("Mango", 2);
 
 console.log(myHashTable.data);
 console.log("----------------------------------------");
 
 console.log(myHashTable.get("grapes"));
 console.log(myHashTable.get("apples"));
+console.log(myHashTable.get(""));
+console.log(myHashTable.get("Bananas"));
+
+console.log("--------------------keys--------------------");
+
+console.log(myHashTable.keys());
