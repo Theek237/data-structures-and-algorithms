@@ -24,4 +24,15 @@ var removeDuplicates = function (nums) {
   return index;
 };
 
+var removeDuplicatesTP = function (nums) {
+  let j = 0;
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[j] !== nums[i] || nums[j] === undefined) {
+      nums[j] = nums[i];
+      j++;
+    }
+  }
+  return j;
+};
+
 console.log(removeDuplicates([1, 1, 2]));
